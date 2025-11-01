@@ -1,0 +1,7 @@
+{
+  "VOLUNTEER_REGISTER_SUCCESS": "Volunteer registered successfully",
+  "ALERT_SENT": "Alert sent successfully",
+  "ADMIN_LOGIN_SUCCESS": "Login successful",
+  "INVALID_CREDENTIALS": "Invalid credentials",
+  "NO_VOLUNTEERS": "No volunteers found"
+}
