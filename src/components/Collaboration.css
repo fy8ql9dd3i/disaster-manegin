@@ -1,0 +1,68 @@
+.collaboration-section {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+.collab-note p {
+  font-size: 1rem;
+  color: #fdfbfb;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.collab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.collab-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collab-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.collab-photo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.collab-info {
+  padding: 15px 10px;
+  text-align: center;
+}
+
+.collab-info h3 {
+  color: #007b83;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.collab-info p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 2px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .collab-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+
+  .collab-photo {
+    height: 150px;
+  }
+}

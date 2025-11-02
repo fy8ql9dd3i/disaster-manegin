@@ -1,0 +1,114 @@
+/* Reset some default styles */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Layout fix to push footer to bottom */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+.main-content {
+  flex: 1; /* take remaining space between navbar and footer */
+  min-height: 700px; /* minimum content height to allow scrolling */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #007bff;
+  padding: 10px 30px;
+  height: 70px; /* approximate navbar height */
+}
+
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link,
+.footer-link {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+}
+
+.nav-link::after,
+.footer-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: width 0.3s;
+}
+
+.nav-link:hover::after,
+.footer-link:hover::after {
+  width: 100%;
+}
+
+.login-btn {
+  background-color: white;
+  color: #007bff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.signup-btn {
+  background-color: #28a745;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: #218838;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 30px;
+  text-align: center;
+  height: 100px; /* footer height stays same */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Animations */
+.nav-link,
+.footer-link,
+.login-btn,
+.signup-btn {
+  transition: all 0.3s ease;
+}

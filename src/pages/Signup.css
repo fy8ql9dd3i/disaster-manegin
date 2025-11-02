@@ -1,0 +1,72 @@
+/* Signup.css */
+
+.page {
+  padding: 60px 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.page h1 {
+  font-size: 2rem;
+  color: #22c55e;
+  margin-bottom: 20px;
+}
+
+.page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.page input[type="text"],
+.page input[type="email"],
+.page input[type="password"],
+.page input[type="file"] {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #d1d5db;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.page input[type="file"] {
+  cursor: pointer;
+  background-color: #f9fafb;
+}
+
+.page button {
+  padding: 10px;
+  background-color: #22c55e;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.page button:hover {
+  background-color: #16a34a;
+}
+
+/* Preview styling */
+.preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.preview p {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #374151;
+}
+
+.preview img {
+  border-radius: 5px;
+  border: 1px solid #d1d5db;
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
+}
