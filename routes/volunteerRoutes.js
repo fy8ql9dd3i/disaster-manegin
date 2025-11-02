@@ -1,12 +1,20 @@
 import express from "express";
+import upload from "../middlewares/upload.js";
 import { registerVolunteer, getVolunteers } from "../controllers/volunteerController.js";
 
 const router = express.Router();
 
-// Route: Volunteer registration (public)
-router.post("/register", registerVolunteer);
+// ---------------------------
+// Register volunteer
+// Supports CV + Digital ID image upload
+// ---------------------------
+router.post(
+  "/register",
+  upload.any(), // Accept any file fields
+  registerVolunteer
+);
 
-// Optional route: Get all volunteers (can protect with admin JWT if needed)
+// Get all volunteers
 router.get("/", getVolunteers);
 
 export default router;

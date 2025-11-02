@@ -1,5 +1,5 @@
+// backend/controllers/volunteerController.js
 import Volunteer from "../models/Volunteer.js";
-import { v4 as uuidv4 } from "uuid";
 
 /* =========================
    VOLUNTEER CONTROLLER
@@ -20,15 +20,27 @@ export const registerVolunteer = async (req, res) => {
       return res.status(400).json({ message: "Volunteer already registered" });
     }
 
+    // Handle uploaded files (cv and digital ID image)
+    let cvFile = null;
+    let digitalIDImageFile = null;
+
+    if (req.files && req.files.length > 0) {
+      req.files.forEach(file => {
+        if (file.fieldname === "cv") cvFile = file.path;
+        if (file.fieldname === "digitalIDImage") digitalIDImageFile = file.path;
+      });
+    }
+
     // Create new volunteer
     const newVolunteer = await Volunteer.create({
       name,
       phone,
       email,
       location,
-      specialization,
-      digitalID: uuidv4(), // Unique ID for tracking
-      status: "Pending",   // Default status
+      specialization: specialization || null,
+      cv: cvFile || null,
+      digitalIDImage: digitalIDImageFile || null,
+      status: "Pending",
     });
 
     res.status(201).json({
@@ -36,20 +48,22 @@ export const registerVolunteer = async (req, res) => {
       volunteer: newVolunteer,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error registering volunteer:", error.message);
+    res.status(500).json({ message: "Server error: " + error.message });
   }
 };
 
 /**
- * @desc Get all volunteers (optional if admin wants to check from API)
+ * @desc Get all volunteers
  * @route GET /api/volunteers
- * @access Public or Admin (can protect if needed)
+ * @access Public (can protect for admin later)
  */
 export const getVolunteers = async (req, res) => {
   try {
-    const volunteers = await Volunteer.find();
-    res.json(volunteers);
+    const volunteers = await Volunteer.find().sort({ createdAt: -1 }); // newest first
+    res.status(200).json(volunteers);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error("Error fetching volunteers:", error.message);
+    res.status(500).json({ message: "Server error: " + error.message });
   }
 };

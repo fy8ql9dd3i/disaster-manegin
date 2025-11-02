@@ -3,11 +3,24 @@ import mongoose from "mongoose";
 
 const adminSchema = new mongoose.Schema(
   {
-    username: { type: String, required: true, unique: true },
-    email: { type: String },
-    password: { type: String, required: true }, // hashed password
+    email: {
+      type: String,
+      required: [true, "Admin email is required"],
+      unique: true,
+    },
+    password: {
+      type: String,
+      required: [true, "Admin password is required"],
+      minlength: 6,
+    },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Admin", adminSchema);
+// Compare password during login (plain text)
+adminSchema.methods.matchPassword = function (enteredPassword) {
+  return this.password === enteredPassword;
+};
+
+const Admin = mongoose.model("Admin", adminSchema);
+export default Admin;
